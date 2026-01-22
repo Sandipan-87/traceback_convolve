@@ -1,1 +1,26 @@
+# Ignore Virtual Env
+venv/
+env/
 
+# Ignore Python Cache
+__pycache__/
+*.pyc
+
+# Ignore Secrets (CRITICAL)
+.env
+.streamlit/secrets.toml
+
+# Ignore Generated Results (Keep the folders, but ignore contents)
+frames/*
+reports/*
+uploads/*
+!frames/.gitkeep
+!reports/.gitkeep
+!uploads/.gitkeep
+
+# Ignore Large Model Files (Code downloads them automatically)
+*.pt
+*.onnx
+
+# Ignore System Files
+.DS_Store
