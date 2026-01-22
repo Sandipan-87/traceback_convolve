@@ -34,5 +34,5 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/TraceBack.git](https://github.com/YOUR_USERNAME/TraceBack.git)
+git clone https://github.com/Sandipan-87/traceback_convolve.git
 cd TraceBack
