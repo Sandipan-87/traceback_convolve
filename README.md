@@ -25,14 +25,94 @@
 
 ---
 
-## Installation & Setup Guide
+# Installation & Setup Guide
 
 ### Prerequisites
 * Python 3.11.9 (Using latest python version gives heavy dependency error)
 * Git
 * A Qdrant Cloud API Key
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 ```bash
 git clone https://github.com/Sandipan-87/traceback_convolve.git
 cd TraceBack
+```
+
+## 2. Set Up a Virtual Environment
+
+It is recommended to use a virtual environment to manage dependencies.
+Windows:
+
+```bash
+
+python -m venv venv
+.\venv\Scripts\activate
+```
+Mac/Linux:
+
+```bash
+
+python3 -m venv venvsource venv/bin/activate
+```
+
+## 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+**Troubleshooting:** If you encounter torch/torchaudio version conflicts, run:
+
+```bash
+pip install --upgrade torch torchvision torchaudio ultralytics
+```
+
+
+## 4. Initialize System Folders
+
+The application requires specific directories to store processed data. Run this command to create them:
+
+**Windows (PowerShell):**
+
+```powershell
+md frames, reports, uploads, data
+```
+
+**Mac/Linux:**
+
+```bash
+mkdir frames reports uploads data
+```
+
+
+## 5. (Optional) Batch Data Setup
+
+To use the "Batch Processing" feature (indexing a folder of images):
+
+- Place your raw images into the `data/` folder.
+- The application will automatically detect these images for batch indexing.
+
+
+## Usage Guide
+
+### 1. Run the App:
+
+```bash
+streamlit run app.py
+```
+
+
+### 2. Upload Video:
+
+Drag and drop CCTV footage (MP4/AVI) into the sidebar.
+
+### 3. Search:
+
+- **Text Mode:** Type "Person with blue backpack".
+- **Image Mode:** Upload a photo of the missing person.
+
+
+### 4. Export:
+
+Download the Forensic PDF Report from the "Results" tab.
+
