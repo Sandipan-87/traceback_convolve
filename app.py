@@ -350,7 +350,7 @@ def main():
     
     # LEFT: SEARCH PANEL
     with col_left:
-        st.markdown("### 📷 Target Acquisition")
+        st.markdown("###  Target Acquisition")
         
         if not st.session_state.upload_id:
             st.warning(" Upload & Process CCTV Video First")
@@ -490,4 +490,5 @@ def main():
             """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
+
     main()
