@@ -3,14 +3,31 @@ TraceBack Configuration
 =======================
 """
 
+import streamlit as st
+import os
 from pathlib import Path
 
 # =============================================================================
-# QDRANT CLOUD CONFIGURATION
+# QDRANT CLOUD CONFIGURATION (SECURE LOAD)
 # =============================================================================
 
-QDRANT_URL = "https://29df6888-9d47-4967-8d24-f165f0900abc.europe-west3-0.gcp.cloud.qdrant.io"
-QDRANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.cIaS1ZDIxjymihM1aW59DAJr_BgFpbBSn4W52wFKNvs"
+def load_secrets():
+    """
+    Securely load secrets from Streamlit secrets.toml or Environment Variables.
+    """
+    try:
+        
+        url = st.secrets["qdrant"]["url"]
+        key = st.secrets["qdrant"]["api_key"]
+        return url, key
+    except (FileNotFoundError, KeyError):
+        
+        url = os.getenv("QDRANT_URL")
+        key = os.getenv("QDRANT_API_KEY")
+        
+        return url, key
+
+QDRANT_URL, QDRANT_API_KEY = load_secrets()
 
 # =============================================================================
 # COLLECTION SETTINGS
@@ -46,6 +63,6 @@ FRAMES_DIR = BASE_DIR / "frames"
 REPORTS_DIR = BASE_DIR / "reports"
 UPLOADS_DIR = BASE_DIR / "uploads"
 
-# Create directories
+
 for dir_path in [FRAMES_DIR, REPORTS_DIR, UPLOADS_DIR]:
-    dir_path.mkdir(exist_ok=True)
+    dir_path.mkdir(parents=True, exist_ok=True)
