@@ -28,14 +28,14 @@
 # Installation & Setup Guide
 
 ### Prerequisites
-* Python 3.11.9 (Using latest python version gives heavy dependency error)
+* Python 3.11.9 (Recommended to avoid dependency error)
 * Git
 * A Qdrant Cloud API Key
 
 ## 1. Clone the Repository
 ```bash
 git clone https://github.com/Sandipan-87/traceback_convolve.git
-cd TraceBack
+cd traceback_convolve
 ```
 
 ## 2. Set Up a Virtual Environment
@@ -83,9 +83,15 @@ md frames, reports, uploads, data
 ```bash
 mkdir frames reports uploads data
 ```
+## 5. Configure API Secrets:
+Create a file named .streamlit/secrets.toml in the root directory and add your Qdrant credentials:
 
-
-## 5. (Optional) Batch Data Setup
+```Ini, TOML
+[qdrant]
+url = "https://your-cluster-url.qdrant.tech"
+api_key = "your-secret-api-key"
+```
+## 6. (Optional) Batch Data Setup
 
 To use the "Batch Processing" feature (indexing a folder of images):
 
